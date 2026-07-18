@@ -15,10 +15,15 @@ const PORT = process.env.PORT || 4000;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://multi-tenant-frontend-sepia.vercel.app/'
+    'https://multi-tenant-frontend-sepia.vercel.app'
   ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+app.options('*', cors());
+
 app.use(express.json());
 
 // Routes
